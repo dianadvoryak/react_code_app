@@ -1,0 +1,64 @@
+.h1{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #050510;
+  margin-bottom: 18px;
+}
+.input_container{
+  height: 40px;
+  max-width: 100%;
+  background: #F7F7F8;
+  border-radius: 16px;
+  position: relative;
+  padding: 8px 18px 8px 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.input{
+  margin: auto 10px;
+  border-radius: 16px;
+  padding: 10px 12px;
+  width: 100%;
+  background: #F7F7F8;
+  outline: none; 
+  border: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #C3C3C6;
+  margin-bottom: 22px;
+}
+
+.container{
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.img_search{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+}
+.img_tab{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 12px;
+}
+.img_tab:hover{
+  cursor: pointer;
+}

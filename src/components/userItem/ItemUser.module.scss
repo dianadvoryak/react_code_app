@@ -1,0 +1,49 @@
+.container{
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.link{
+  text-decoration: none;
+}
+
+.wrapper{
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.img{
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.name{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #050510;
+  text-decoration: none;
+}
+
+.position{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #55555C;
+  text-decoration: none;
+}
+
+.name_group{
+  display: flex;
+  margin-bottom: -21px;
+  flex-direction: row;
+}
