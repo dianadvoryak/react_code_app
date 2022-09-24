@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import classes from './ItemUser.module.scss'
 
-
 export const ItemUser = ({person}) => {
 
   return (

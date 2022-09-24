@@ -1,0 +1,131 @@
+.overlay{
+  z-index: 9;
+  background: rgba(5, 5, 16, 0.16);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.module{
+  z-index: 10;
+  position: absolute;
+  width: 373px;
+  height: 192px;
+  left: calc(50% - 373px/2 + 0.5px);
+  top: calc(50% - 192px/2);
+  background: #FFFFFF;
+  border-radius: 20px;
+  cursor: auto;
+}
+
+.img{
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 23px;
+}
+
+.module{
+  padding: 15px 23px 1px 23px;
+}
+
+.title{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #050510;
+}
+
+.wrapper_title{
+  margin-bottom: 25px;
+}
+
+.radio_block{
+  display: flex;
+  flex-direction: column;
+}
+
+.label{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: flex-end;
+  color: #050510;
+  margin-left: 24px;
+}
+
+.wrapper_radio{
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper_radio:first-child{
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.wrapper_title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.first_radio[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  z-index: 99;
+  left: -10px;
+  top: 1px;
+  width: 135px;
+  height: 20px;
+}
+
+.second_radio[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  z-index: 99;
+  left: 13px;
+  bottom: 24px;
+  width: 175px;
+  height: 20px;
+}
+
+.wrapper_radio input[type="radio"] + label {
+  position: relative;
+  cursor: pointer;
+  line-height: 30px;
+}
+
+.wrapper_radio input[type="radio"] + label::after {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: 3px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #6534FF;
+  border-radius: 50%;
+  background: #FFF;
+}
+
+
+.wrapper_radio input[type="radio"]:checked + label::after {
+  border: 6px solid #6534FF;
+  width: 10px;
+  height: 10px;
+}
+
+

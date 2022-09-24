@@ -13,8 +13,8 @@ function App() {
   return (
     <div className={classes.container}>
       <Routes>
-        <Route exact path='/' element={<All />} />
-        <Route exact path='/designers' element={<Designers />} />
+        <Route exact="true" path='/' element={<All />} />
+        <Route path='/designers' element={<Designers />} />
         <Route path='/analysts' element={<Analysts />} />
         <Route path='/managers' element={<Managers />} />
         <Route path='/ios' element={<Ios />} />
