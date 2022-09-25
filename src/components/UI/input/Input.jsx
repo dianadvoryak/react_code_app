@@ -4,7 +4,7 @@ import Search from '../../../assets/Search.png'
 import Tab from '../../../assets/Tab.png'
 import { Modal } from '../modal/Modal';
 
-export const Input = ({searchValue, onChangeSearchValue, sortUsers}) => {
+export const Input = ({searchValue, onChangeSearchValue, onChangeFilter}) => {
 
   const [open, setOpen] = useState(false)
 
@@ -15,7 +15,7 @@ export const Input = ({searchValue, onChangeSearchValue, sortUsers}) => {
   return (
     <>
     {
-      open && <Modal activeModal={activeModal} />
+      open && <Modal activeModal={activeModal} onChangeFilter={onChangeFilter} />
     }
       <div className={classes.container}>
         <h1 className={classes.h1}>Поиск</h1>

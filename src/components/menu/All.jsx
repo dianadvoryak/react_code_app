@@ -6,6 +6,7 @@ import { Users } from '../users/Users';
 import { useFetching } from '../hooks/useFetching';
 import { Loading } from '../UI/loading/Loading';
 import { ServerError } from '../UI/serverError/ServerError';
+import { NotFound } from '../UI/notFound/NotFound';
 
 export const All = () => {
 
@@ -15,6 +16,7 @@ export const All = () => {
     setUsers(response.items)
   })
   const [searchValue, setSearchValue] = useState('')
+  const [filter, setFilter] = useState('alfabet')
 
   useEffect(() => {
     fetchUsers()
@@ -24,36 +26,37 @@ export const All = () => {
     setSearchValue(event.target.value)
   }
 
-
-
-
-  const sortedPosts = useMemo(() => {
-    console.log(1)
-    if(searchValue){
-      [...users].filter(person => {
-        const fullName = (person.firstName + ' ' + person.lastName).toLowerCase()
-        return fullName.includes((searchValue).toLowerCase()) 
-      })
-    }
-  }, [users])
-
-console.log(sortedPosts)
-
-
-  const sortUsers = () => {
-    setUsers([...users].filter(person => {
-        const fullName = (person.firstName + ' ' + person.lastName).toLowerCase()
-        return fullName.includes((searchValue).toLowerCase()) 
-      })
-    )
+  const onChangeFilter = (event) => {
+    setFilter(event)
   }
+
+  const sortedUsers = useMemo(() => {
+    let sorted = []
+    if(searchValue){
+      sorted = [...users].filter(person => {
+        const fullName = (person.firstName + ' ' + person.lastName).toLowerCase()
+        return fullName.includes((searchValue).toLowerCase()) 
+      }) 
+      return sorted
+    } 
+    else if (filter === 'alfabet') {
+      return [...users].sort((a, b) => a.firstName.localeCompare(b.firstName))
+    }
+    else if (filter === 'birthday') {
+      return [...users].sort((a, b) => a.birthday.localeCompare(b.birthday))
+    }
+    else return users
+  }, [searchValue, users, filter])
+
+
 
   return (
     <div>
       <Input 
         searchValue={searchValue} 
+        onChangeFilter={onChangeFilter}
         onChangeSearchValue={onChangeSearchValue} 
-        sortUsers={sortUsers}
+        onChange={() => (sortedUsers())}
       />
       <Users />
       {
@@ -62,17 +65,11 @@ console.log(sortedPosts)
       {
         isUsersLoading
         ? <Loading />
-        : (
-          users
-            // .filter(person => {
-            //   const fullName = (person.firstName + ' ' + person.lastName).toLowerCase()
-            //   return fullName.includes((searchValue).toLowerCase()) 
-            // })
-            .map(person => (
-              person
-              ? <ItemUser key={person.id + Math.floor(Math.random()*1000)} person={person} />
-              : <h1>no</h1>
-            )) 
+        : 
+        (
+          sortedUsers.length !== 0
+          ? sortedUsers.map(person => <ItemUser key={person.id + Math.floor(Math.random()*1000)} person={person} />)
+          : <NotFound />
         )
       }
     </div>
