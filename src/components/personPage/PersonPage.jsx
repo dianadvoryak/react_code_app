@@ -67,7 +67,8 @@ export const PersonPage = () => {
                 <img src={findPerson.avatarUrl} alt="" className={classes.logo}/>
                 <div className={classes.name_group}>
                   <h2 className={classes.name}>{findPerson.firstName}</h2>&nbsp;
-                  <h2 className={classes.name}>{findPerson.lastName}</h2>
+                  <h2 className={classes.name}>{findPerson.lastName}</h2>&nbsp;
+                  <span className={classes.userTag}>{findPerson.userTag}</span>
                 </div>
                 <h3 className={classes.position}>{findPerson.position}</h3>
               </div>

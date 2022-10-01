@@ -28,7 +28,7 @@
 .inner{
   display: flex;
   flex-direction: column;
-  align-self: center;
+  align-items: center;
   text-align: center;
 }
 
@@ -121,5 +121,16 @@ p{
   font-size: 16px;
   line-height: 20px;
   text-align: right;
+  color: #97979B;
+}
+
+.userTag{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
   color: #97979B;
 }

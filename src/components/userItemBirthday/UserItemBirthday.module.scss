@@ -10,6 +10,12 @@
 
 .wrapper{
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.block{
+  display: flex;
   margin-bottom: 12px;
 }
 
@@ -57,4 +63,16 @@
   display: flex;
   align-items: center;
   color: #97979B;
+}
+
+.birthday{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: right;
+  color: #55555C;
+  align-items: center;
+  display: flex;
 }

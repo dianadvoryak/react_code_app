@@ -12,7 +12,8 @@ export const ItemUser = ({person}) => {
           <div>
             <div className={classes.name_group}>
               <h2 className={classes.name}>{person.firstName}</h2>&nbsp;
-              <h2 className={classes.name}>{person.lastName}</h2>
+              <h2 className={classes.name}>{person.lastName}</h2>&nbsp;
+              <span className={classes.userTag}>{person.userTag}</span>
             </div>
             <h3 className={classes.position}>{person.position}</h3>
           </div>

@@ -7,21 +7,27 @@ import { Managers } from './components/menu/Managers';
 import { Ios } from './components/menu/Ios';
 import { Android } from './components/menu/Android';
 import { PersonPage } from './components/personPage/PersonPage';
+import { ModalContext } from './components/context/ModalContext';
+import { InputContext } from './components/context/InputContext';
 
 
 function App() {
   return (
-    <div className={classes.container}>
-      <Routes>
-        <Route exact="true" path='/' element={<All />} />
-        <Route path='/designers' element={<Designers />} />
-        <Route path='/analysts' element={<Analysts />} />
-        <Route path='/managers' element={<Managers />} />
-        <Route path='/ios' element={<Ios />} />
-        <Route path='/android' element={<Android />} />
-        <Route path='/:id' element={<PersonPage />} />
-      </Routes>
-    </div>
+    <ModalContext>
+      <InputContext>
+        <div className={classes.container}>
+          <Routes>
+            <Route exact="true" path='/' element={<All />} />
+            <Route path='/designers' element={<Designers />} />
+            <Route path='/analysts' element={<Analysts />} />
+            <Route path='/managers' element={<Managers />} />
+            <Route path='/ios' element={<Ios />} />
+            <Route path='/android' element={<Android />} />
+            <Route path='/:id' element={<PersonPage />} />
+          </Routes>
+        </div>
+      </InputContext>
+    </ModalContext>
   );
 }
 

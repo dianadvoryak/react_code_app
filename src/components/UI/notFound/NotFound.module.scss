@@ -1,0 +1,53 @@
+.container{
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.img{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-top: 130px;
+  margin-bottom: 10px;
+}
+
+.title{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 22px;
+  text-align: center;
+  color: #050510;
+  margin: 0;
+  
+}
+
+.text{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #97979B;
+  margin: 10px 0;
+}
+
+.btn{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #6534FF;
+  cursor: pointer;
+}
+
+.wrapper{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

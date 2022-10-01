@@ -1,23 +1,18 @@
 import React, { useState } from 'react'
 import classes from './Modal.module.scss'
 import Close from './../../../assets/Close.png'
+import { useCheckedOneContext, useCheckedTwoContext, useChangeOneContext, useChangeTwoContext } from '../../context/ModalContext';
 
 export const Modal = ({activeModal, onChangeFilter}) => {
-const [checked1, setChecked1] = useState(false)
-const [checked2, setChecked2] = useState(false)
+  const checked1 = useCheckedOneContext()
+  const checked2 = useCheckedTwoContext()
+  const checkedChange1 = useChangeOneContext()
+  const checkedChange2 = useChangeTwoContext()
 
   const closeModal = () => {
     setTimeout(() => {
       activeModal()
     }, 300)
-  }
-
-  const checkedChange1 = () => {
-    setChecked1(!checked1)
-  }
-
-  const checkedChange2 = () => {
-    setChecked2(!checked2)
   }
 
   return (
@@ -31,7 +26,7 @@ const [checked2, setChecked2] = useState(false)
           <div className={classes.wrapper_radio}>
             <input 
               onClick={() => (onChangeFilter('alfabet'), closeModal(), checkedChange1())}
-              checked={checked1}
+              defaultChecked={checked1}
               name="sort" 
               type="radio" 
               id="choice1" 
@@ -43,7 +38,7 @@ const [checked2, setChecked2] = useState(false)
           <div className={classes.wrapper_radio}>
             <input 
               onClick={() => (onChangeFilter('birthday'), closeModal(), checkedChange2())}
-              checked={checked2}
+              defaultChecked={checked2}
               name="sort" 
               type="radio" 
               id="choice1" 

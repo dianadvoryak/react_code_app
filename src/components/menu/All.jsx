@@ -7,6 +7,10 @@ import { useFetching } from '../hooks/useFetching';
 import { Loading } from '../UI/loading/Loading';
 import { ServerError } from '../UI/serverError/ServerError';
 import { NotFound } from '../UI/notFound/NotFound';
+import { useInputFieldContext, useChangeInputFieldContext } from '../context/InputContext';
+import { UserItemBirthday } from '../userItemBirthday/UserItemBirthday';
+import { useChangeFilterContext, useFilterContext } from '../context/ModalContext';
+import './styles.scss';
 
 export const All = () => {
 
@@ -15,27 +19,23 @@ export const All = () => {
     const response = await UsersService.GetCurrentUsers('all')
     setUsers(response.items)
   })
-  const [searchValue, setSearchValue] = useState('')
-  const [filter, setFilter] = useState('alfabet')
+  const searchValue = useInputFieldContext()
+  const onChangeSearchValue = useChangeInputFieldContext()
 
+  const filter = useFilterContext()
   useEffect(() => {
     fetchUsers()
   }, [])
 
-  const onChangeSearchValue = (event) => {
-    setSearchValue(event.target.value)
-  }
-
-  const onChangeFilter = (event) => {
-    setFilter(event)
-  }
-
+  const onChangeFilter = useChangeFilterContext()
+ 
   const sortedUsers = useMemo(() => {
     let sorted = []
     if(searchValue){
       sorted = [...users].filter(person => {
         const fullName = (person.firstName + ' ' + person.lastName).toLowerCase()
-        return fullName.includes((searchValue).toLowerCase()) 
+        return (fullName.includes((searchValue).toLowerCase()) 
+        || person.userTag.includes((searchValue).toLowerCase()))
       }) 
       return sorted
     } 
@@ -43,7 +43,7 @@ export const All = () => {
       return [...users].sort((a, b) => a.firstName.localeCompare(b.firstName))
     }
     else if (filter === 'birthday') {
-      return [...users].sort((a, b) => a.birthday.localeCompare(b.birthday))
+      return [...users].sort((a, b) => a.birthday.substr(-4) < b.birthday.substr(-4) ? -1 : 1)
     }
     else return users
   }, [searchValue, users, filter])
@@ -67,9 +67,36 @@ export const All = () => {
         ? <Loading />
         : 
         (
-          sortedUsers.length !== 0
-          ? sortedUsers.map(person => <ItemUser key={person.id + Math.floor(Math.random()*1000)} person={person} />)
-          : <NotFound />
+          filter === 'birthday' 
+          ?
+          (
+            sortedUsers.length !== 0
+            ? 
+            (
+            <>
+              {
+                 sortedUsers
+                 .filter(person => (person.birthday.substr(5, 2) > ((new Date()).getMonth())))
+                 .map(person => <UserItemBirthday key={person.id + Math.floor(Math.random()*1000)} person={person} />)
+              }
+               
+              <div className='container'><div className='data'>{(new Date()).getFullYear()+1}</div></div>
+              
+              {
+                sortedUsers
+                .filter(person => (person.birthday.substr(5, 2) < ((new Date()).getMonth())))
+                .map(person => <UserItemBirthday key={person.id + Math.floor(Math.random()*1000)} person={person} />)
+              }
+            </>
+            )
+            : <NotFound />
+          )
+          : 
+          (
+            sortedUsers.length !== 0
+            ? sortedUsers.map(person => <ItemUser key={person.id + Math.floor(Math.random()*1000)} person={person} />)
+            : <NotFound />
+          )
         )
       }
     </div>
