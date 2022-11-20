@@ -17,9 +17,10 @@ export const PersonPage = () => {
     UsersService.GetCurrentUsers('all')
       .then(data => data.items)
       .then(data => data.find(user => user.id === id))
+      // .then(data => console.log(data.birthday))
       .then(data => {
         setFindPerson(data)
-        setFoundReg(data.birthday.match(re))
+        data && setFoundReg(data.birthday.match(re))
       })
   }, [])
   
@@ -99,7 +100,9 @@ export const PersonPage = () => {
           <div className={classes.line}></div>
           <div className={classes.info_block_2}>
             <img src={Phone} alt="" className={classes.img}/>
-            <a href={`tel:${findPerson.phone}`} className={classes.phone}>{findPerson.phone}</a>
+            {
+              findPerson && <a href={`tel:${findPerson.phone}`} className={classes.phone}>{findPerson.phone}</a>
+            }
           </div>
         </div>
       </div>

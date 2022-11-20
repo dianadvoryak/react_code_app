@@ -2,7 +2,7 @@
   "name": "kode_dev",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dianadvoryak.github.io/react_code_app/",
+  "homepage": "https://dianadvoryak.github.io/react_kode_dev/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
