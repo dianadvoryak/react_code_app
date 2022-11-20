@@ -9,7 +9,7 @@ import classes from './PersonPage.module.scss'
 export const PersonPage = () => {
   const {id} = useParams()
   const [findPerson, setFindPerson] = useState({})
-  const [foundReg, setFoundReg] = useState([])
+  const [foundReg, setFoundReg] = useState('')
 
   const re = /(\d{4})-(\d{2})-(\d{2})/
 
@@ -64,13 +64,18 @@ export const PersonPage = () => {
               </div>
             <div className={classes.wrapper}>
               <div className={classes.inner}>
-                <img src={findPerson.avatarUrl} alt="" className={classes.logo}/>
-                <div className={classes.name_group}>
-                  <h2 className={classes.name}>{findPerson.firstName}</h2>&nbsp;
-                  <h2 className={classes.name}>{findPerson.lastName}</h2>&nbsp;
-                  <span className={classes.userTag}>{findPerson.userTag}</span>
-                </div>
-                <h3 className={classes.position}>{findPerson.position}</h3>
+                {
+                  findPerson && 
+                  <>
+                    <img src={findPerson.avatarUrl} alt="" className={classes.logo}/>
+                    <div className={classes.name_group}>
+                      <h2 className={classes.name}>{findPerson.firstName}</h2>&nbsp;
+                      <h2 className={classes.name}>{findPerson.lastName}</h2>&nbsp;
+                      <span className={classes.userTag}>{findPerson.userTag}</span>
+                    </div>
+                    <h3 className={classes.position}>{findPerson.position}</h3>
+                  </>
+                }
               </div>
             </div>
           </div>
@@ -80,11 +85,16 @@ export const PersonPage = () => {
       <div className={classes.container}>
         <div className={classes.info_wrapper}>
           <div className={classes.info_block_1}>
-            <div className={classes.birthday}>
-              <img src={Star} alt="" className={classes.img}/>
-              <p>{countDate[0]}</p>
-            </div>
-              <p className={classes.span}>{countDate[1]}&nbsp;года</p>
+            {
+              foundReg && 
+              <>
+                <div className={classes.birthday}>
+                  <img src={Star} alt="" className={classes.img}/>
+                  <p>{countDate[0]}</p>
+                </div>
+                <p className={classes.span}>{countDate[1]}&nbsp;года</p>
+              </>
+            }
           </div>
           <div className={classes.line}></div>
           <div className={classes.info_block_2}>
