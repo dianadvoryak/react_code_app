@@ -17,7 +17,7 @@ function App() {
       <InputContext>
         <div className={classes.container}>
           <Routes>
-            <Route exact="true" path='/' element={<All />} />
+            <Route exact="true" path='/react_kode_dev' element={<All />} />
             <Route path='/designers' element={<Designers />} />
             <Route path='/analysts' element={<Analysts />} />
             <Route path='/managers' element={<Managers />} />

@@ -8,7 +8,7 @@ export const Users = () => {
   return (
     <>
       <div className={classes.container}>
-        <NavLink exact="true" end to='/' className={classes.item}>All</NavLink>
+        <NavLink exact="true" end to='/react_kode_dev' className={classes.item}>All</NavLink>
         <NavLink to='/designers' className={classes.item}>Designers</NavLink>
         <NavLink to='/analysts' className={classes.item}>Analysts</NavLink>
         <NavLink to='/managers' className={classes.item}>Managers</NavLink>
